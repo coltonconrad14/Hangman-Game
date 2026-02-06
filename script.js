@@ -458,7 +458,7 @@ class HangmanGame {
             this.checkWin();
         } else {
             const letter = this.pickRandomLetters(remainingWrong, 1)[0];
-            this.applyWrongLetter(letter, { applyPenalty: true, resetStreak: true, triggerTaunt: true });
+            this.applyWrongLetter(letter, { applyPenalty: false, resetStreak: false, triggerTaunt: false });
             this.showBoostMessage(`Tails. ${letter} is not in the word.`);
             this.triggerCoinFlip('tails');
         }
