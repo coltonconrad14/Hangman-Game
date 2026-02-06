@@ -1,3 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700;800&family=Rubik+Mono+One&display=swap');
+
+:root {
+    --ink: #13223a;
+    --ink-muted: #4b5d75;
+    --primary: #1f7a8c;
+    --primary-dark: #145a65;
+    --accent: #ff7a59;
+    --accent-dark: #e26245;
+    --surface: #ffffff;
+    --surface-muted: #f3f6f8;
+    --banner: #f7e1b5;
+    --banner-edge: #e7b96c;
+    --success: #2a9d8f;
+    --danger: #e76f51;
+    --shadow: rgba(19, 34, 58, 0.25);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,50 +23,60 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Figtree', 'Trebuchet MS', sans-serif;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 122, 89, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(31, 122, 140, 0.22), transparent 55%),
+        linear-gradient(135deg, #f8f4ef 0%, #e7f3f6 55%, #f3ede6 100%);
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
+    color: var(--ink);
 }
 
 .container {
     max-width: 900px;
     width: 100%;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    background: var(--surface);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px var(--shadow);
     overflow: hidden;
+    border: 1px solid rgba(19, 34, 58, 0.08);
 }
 
 /* Ad Banners */
 .ad-banner {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    background: linear-gradient(135deg, var(--banner) 0%, #ffe3a6 100%);
     padding: 15px;
     text-align: center;
     font-weight: bold;
-    color: #2d3436;
-    border-bottom: 2px solid #e17055;
+    color: var(--ink);
+    border-bottom: 2px solid var(--banner-edge);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85em;
 }
 
 .ad-bottom {
     border-bottom: none;
-    border-top: 2px solid #e17055;
+    border-top: 2px solid var(--banner-edge);
 }
 
 /* Header */
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #1f7a8c 0%, #2f8c9c 45%, #ff7a59 100%);
+    color: #fef6ee;
     text-align: center;
     padding: 30px 20px;
 }
 
 header h1 {
-    font-size: 2.5em;
+    font-family: 'Rubik Mono One', 'Figtree', sans-serif;
+    font-size: 2.6em;
     margin-bottom: 10px;
+    letter-spacing: 1px;
 }
 
 .subtitle {
@@ -69,13 +97,14 @@ main {
 }
 
 .hangman-display {
-    background: #f8f9fa;
-    border-radius: 15px;
+    background: var(--surface-muted);
+    border-radius: 18px;
     padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 24px rgba(19, 34, 58, 0.12);
+    border: 1px solid rgba(19, 34, 58, 0.08);
 }
 
 .game-info {
@@ -85,12 +114,12 @@ main {
 
 /* Word Display */
 .word-display {
-    font-size: 2.5em;
+    font-size: 2.6em;
     letter-spacing: 10px;
     text-align: center;
     margin-bottom: 30px;
     font-weight: bold;
-    color: #2d3436;
+    color: var(--ink);
     min-height: 60px;
     display: flex;
     justify-content: center;
@@ -103,8 +132,9 @@ main {
     justify-content: space-around;
     margin-bottom: 20px;
     padding: 15px;
-    background: #f8f9fa;
-    border-radius: 10px;
+    background: var(--surface-muted);
+    border-radius: 14px;
+    border: 1px solid rgba(19, 34, 58, 0.08);
 }
 
 .stat {
@@ -114,7 +144,7 @@ main {
 .stat .label {
     display: block;
     font-size: 0.9em;
-    color: #636e72;
+    color: var(--ink-muted);
     margin-bottom: 5px;
 }
 
@@ -122,7 +152,7 @@ main {
     display: block;
     font-size: 1.5em;
     font-weight: bold;
-    color: #2d3436;
+    color: var(--ink);
 }
 
 /* Letters Used */
@@ -132,7 +162,7 @@ main {
 
 .letters-used p {
     margin-bottom: 10px;
-    color: #636e72;
+    color: var(--ink-muted);
 }
 
 #used-letters {
@@ -144,10 +174,10 @@ main {
 
 .used-letter {
     padding: 5px 10px;
-    background: #dfe6e9;
-    border-radius: 5px;
+    background: #e3edf2;
+    border-radius: 999px;
     font-weight: bold;
-    color: #2d3436;
+    color: var(--ink);
 }
 
 /* Keyboard */
@@ -160,41 +190,41 @@ main {
 
 .key {
     padding: 12px;
-    background: #667eea;
-    color: white;
+    background: var(--primary);
+    color: #fef6ee;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 1em;
     font-weight: bold;
-    transition: all 0.2s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .key:hover:not(:disabled) {
-    background: #764ba2;
+    background: var(--primary-dark);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px rgba(19, 34, 58, 0.25);
 }
 
 .key:disabled {
-    background: #b2bec3;
+    background: #b8c4cc;
     cursor: not-allowed;
     opacity: 0.5;
 }
 
 .key.correct {
-    background: #00b894;
+    background: var(--success);
 }
 
 .key.wrong {
-    background: #e74c3c;
+    background: var(--danger);
 }
 
 /* Game Message */
 .game-message {
     text-align: center;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 14px;
     margin-bottom: 20px;
     font-size: 1.3em;
     font-weight: bold;
@@ -203,18 +233,19 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    border: 1px solid transparent;
 }
 
 .game-message.win {
-    background: #d4edda;
-    color: #155724;
-    border: 2px solid #c3e6cb;
+    background: #dcf3e9;
+    color: #0f4a3f;
+    border-color: #bde4d4;
 }
 
 .game-message.lose {
-    background: #f8d7da;
-    color: #721c24;
-    border: 2px solid #f5c6cb;
+    background: #fde6dc;
+    color: #6f2c1d;
+    border-color: #f6c3b4;
 }
 
 .game-message .word-reveal {
@@ -227,8 +258,8 @@ main {
 .btn-primary {
     width: 100%;
     padding: 15px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--accent) 0%, #ff9a5c 100%);
+    color: #2c1a12;
     border: none;
     border-radius: 10px;
     font-size: 1.1em;
@@ -239,13 +270,13 @@ main {
 
 .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(19, 34, 58, 0.25);
 }
 
 /* Footer */
 footer {
-    background: #2d3436;
-    color: white;
+    background: #13223a;
+    color: #fef6ee;
     text-align: center;
     padding: 20px;
     font-size: 0.9em;
@@ -258,7 +289,7 @@ footer {
     }
 
     .word-display {
-        font-size: 1.8em;
+        font-size: 1.9em;
         letter-spacing: 5px;
     }
 

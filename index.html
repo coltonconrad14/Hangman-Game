@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Play Hangman against an AI word picker. Guess letters, track scores, and avoid 6 wrong guesses.">
     <title>Hangman Game - Play Against AI</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -73,7 +74,7 @@
                     <div class="keyboard" id="keyboard"></div>
 
                     <!-- Game Status Message -->
-                    <div id="game-message" class="game-message"></div>
+                    <div id="game-message" class="game-message" aria-live="polite"></div>
 
                     <!-- New Game Button -->
                     <button id="new-game-btn" class="btn-primary">New Game</button>
