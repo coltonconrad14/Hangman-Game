@@ -568,21 +568,192 @@ footer {
 }
 
 @media (max-width: 520px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    .container {
+        border-radius: 18px;
+    }
+
+    header {
+        padding: 20px 12px 24px;
+    }
+
+    header h1 {
+        font-size: 1.9em;
+    }
+
+    main {
+        padding: 16px 12px;
+    }
+
+    .game-area {
+        gap: 16px;
+    }
+
+    .hangman-display {
+        padding: 12px;
+    }
+
+    #hangman-svg {
+        width: 180px;
+        height: 210px;
+    }
+
     .word-display {
-        font-size: 1.6em;
-        letter-spacing: 4px;
+        font-size: 1.4em;
+        letter-spacing: 3px;
+        margin-bottom: 16px;
+        min-height: 40px;
     }
 
     .game-info {
         min-width: 0;
+        padding: 14px;
+    }
+
+    .game-controls,
+    .game-stats {
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .control .value {
+        font-size: 1.05em;
+    }
+
+    .stat .value {
+        font-size: 1.2em;
+    }
+
+    .letters-used {
+        margin-bottom: 12px;
+    }
+
+    .boosts {
+        padding: 12px;
+        margin-bottom: 12px;
+    }
+
+    .boost-message {
+        min-height: 14px;
     }
 
     .keyboard {
         grid-template-columns: repeat(6, 1fr);
+        gap: 6px;
+        margin-bottom: 12px;
+    }
+
+    .key {
+        padding: 8px 4px;
+        font-size: 0.85em;
     }
 
     .boost-actions {
         grid-template-columns: 1fr;
+    }
+
+    .game-message {
+        padding: 12px;
+        margin-bottom: 12px;
+        font-size: 1.05em;
+        min-height: 48px;
+    }
+
+    .btn-primary {
+        padding: 12px;
+        font-size: 1em;
+    }
+
+    .ad-banner,
+    footer {
+        display: none;
+    }
+}
+
+@media (max-width: 430px) {
+    body {
+        padding: max(8px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right))
+            max(12px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+    }
+
+    header h1 {
+        font-size: 1.75em;
+        letter-spacing: 1px;
+    }
+
+    #hangman-svg {
+        width: 170px;
+        height: 200px;
+    }
+
+    .game-controls,
+    .game-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .word-display {
+        font-size: 1.3em;
+        letter-spacing: 2px;
+    }
+
+    .keyboard {
+        grid-template-columns: repeat(6, 1fr);
+        gap: 5px;
+    }
+
+    .key {
+        padding: 7px 4px;
+        font-size: 0.8em;
+    }
+
+    .boost-btn {
+        padding: 9px 10px;
+        font-size: 0.9em;
+    }
+
+    .game-message {
+        min-height: 44px;
+    }
+}
+
+@media (max-height: 720px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+    }
+
+    header {
+        padding: 20px 16px 24px;
+    }
+
+    main {
+        padding: 16px;
+    }
+
+    .game-area {
+        gap: 18px;
+    }
+
+    .hangman-display {
+        padding: 12px;
+    }
+
+    #hangman-svg {
+        width: 190px;
+        height: 220px;
+    }
+
+    .game-message {
+        min-height: 52px;
+    }
+
+    .ad-banner,
+    footer {
+        display: none;
     }
 }
 
