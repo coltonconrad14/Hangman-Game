@@ -164,6 +164,7 @@ class HangmanGame {
             this.treatCharge = 0;
             this.score = Math.max(0, this.score - this.wrongGuessPenalty);
             this.showBodyPart();
+            this.maybeTriggerTaunt();
             this.checkLoss();
         }
 
@@ -250,6 +251,27 @@ class HangmanGame {
                 part.style.display = 'block';
             }
         }
+    }
+
+    maybeTriggerTaunt() {
+        const hangman = document.getElementById('hangman-svg');
+        if (!hangman) {
+            return;
+        }
+
+        const tauntChance = 0.18;
+        if (Math.random() > tauntChance) {
+            return;
+        }
+
+        hangman.classList.remove('taunt');
+        void hangman.offsetWidth;
+        hangman.classList.add('taunt');
+
+        window.clearTimeout(this.tauntTimeoutId);
+        this.tauntTimeoutId = window.setTimeout(() => {
+            hangman.classList.remove('taunt');
+        }, 900);
     }
 
     hideBodyParts() {

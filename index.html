@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hang Jerry is a streak-powered hangman game with category packs, bonus reveals, and a fresh word bank.">
-    <title>Hang Jerry - Streak-Powered Hangman</title>
+    <title>Hang Jerry</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,63 +14,59 @@
             <p>Advertisement Space</p>
         </div>
 
-        <div class="promo-bar">
-            <span>NEW SEASON DROP</span> Streak Boost + Mega Category Packs
-        </div>
-
         <header>
-            <h1>🎮 Hang Jerry</h1>
-            <p class="subtitle">A streak-powered hangman twist with Jerry Treat bonuses.</p>
-            <div class="hero-badges">
-                <span>Streak Boost</span>
-                <span>Category Packs</span>
-                <span>Bonus Reveals</span>
-            </div>
+            <h1>Hang Jerry</h1>
         </header>
 
         <main>
-            <section class="promo-grid">
-                <article class="promo-card">
-                    <h3>Build the Streak</h3>
-                    <p>Three correct guesses in a row charges the Treat Meter and auto-reveals a letter.</p>
-                </article>
-                <article class="promo-card">
-                    <h3>Fresh Categories</h3>
-                    <p>From Music to Space to Street Food, every round is a new theme to conquer.</p>
-                </article>
-                <article class="promo-card">
-                    <h3>Jerry Points</h3>
-                    <p>Rack up points for accuracy, bonus reveals, and clutch wins.</p>
-                </article>
-            </section>
-
             <div class="game-area">
                 <!-- Hangman Canvas -->
                 <div class="hangman-display">
-                    <svg id="hangman-svg" width="250" height="300">
+                    <svg id="hangman-svg" width="260" height="300" viewBox="0 0 260 300" role="img" aria-label="Jerry mascot hangman">
                         <!-- Gallows -->
-                        <line x1="10" y1="280" x2="150" y2="280" stroke="#333" stroke-width="4"/>
-                        <line x1="50" y1="280" x2="50" y2="20" stroke="#333" stroke-width="4"/>
-                        <line x1="50" y1="20" x2="150" y2="20" stroke="#333" stroke-width="4"/>
-                        <line x1="150" y1="20" x2="150" y2="50" stroke="#333" stroke-width="4"/>
-                        
+                        <line x1="20" y1="270" x2="170" y2="270" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="60" y1="270" x2="60" y2="20" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="60" y1="20" x2="170" y2="20" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="170" y1="20" x2="170" y2="44" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
+                        <line x1="60" y1="60" x2="105" y2="20" stroke="#a66a3f" stroke-width="6" stroke-linecap="round"/>
+
                         <!-- Head -->
-                        <circle id="head" cx="150" cy="70" r="20" stroke="#e74c3c" stroke-width="3" fill="none" style="display:none;"/>
-                        
+                        <g id="head" class="jerry-head" style="display:none;">
+                            <circle cx="175" cy="78" r="22" fill="#ffd39b" stroke="#6b3f28" stroke-width="3"/>
+                            <circle class="jerry-eye" cx="167" cy="73" r="3" fill="#6b3f28"/>
+                            <circle class="jerry-eye" cx="184" cy="73" r="3" fill="#6b3f28"/>
+                            <path class="jerry-smile" d="M168 88 Q175 94 182 88" stroke="#6b3f28" stroke-width="3" fill="none" stroke-linecap="round"/>
+                            <circle cx="159" cy="82" r="4" fill="#f4a261" opacity="0.7"/>
+                            <circle cx="191" cy="82" r="4" fill="#f4a261" opacity="0.7"/>
+                            <path d="M160 60 Q175 46 190 60" fill="#f6b26b" stroke="#6b3f28" stroke-width="3" stroke-linecap="round"/>
+                        </g>
+
                         <!-- Body -->
-                        <line id="body" x1="150" y1="90" x2="150" y2="150" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
-                        
+                        <rect id="body" x="160" y="104" width="30" height="52" rx="14" fill="#4aa3a1" stroke="#1d5b5a" stroke-width="3" style="display:none;"/>
+
                         <!-- Left Arm -->
-                        <line id="left-arm" x1="150" y1="110" x2="120" y2="130" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
-                        
+                        <g id="left-arm" style="display:none;">
+                            <line x1="162" y1="120" x2="136" y2="140" stroke="#f6b26b" stroke-width="8" stroke-linecap="round"/>
+                            <circle cx="132" cy="142" r="6" fill="#ffd39b" stroke="#6b3f28" stroke-width="2"/>
+                        </g>
+
                         <!-- Right Arm -->
-                        <line id="right-arm" x1="150" y1="110" x2="180" y2="130" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
-                        
+                        <g id="right-arm" style="display:none;">
+                            <line x1="188" y1="120" x2="214" y2="140" stroke="#f6b26b" stroke-width="8" stroke-linecap="round"/>
+                            <circle cx="218" cy="142" r="6" fill="#ffd39b" stroke="#6b3f28" stroke-width="2"/>
+                        </g>
+
                         <!-- Left Leg -->
-                        <line id="left-leg" x1="150" y1="150" x2="130" y2="190" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
-                        
+                        <g id="left-leg" style="display:none;">
+                            <line x1="168" y1="154" x2="152" y2="196" stroke="#3d5a80" stroke-width="8" stroke-linecap="round"/>
+                            <rect x="146" y="194" width="18" height="10" rx="4" fill="#2b3a55"/>
+                        </g>
+
                         <!-- Right Leg -->
-                        <line id="right-leg" x1="150" y1="150" x2="170" y2="190" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                        <g id="right-leg" style="display:none;">
+                            <line x1="182" y1="154" x2="196" y2="196" stroke="#3d5a80" stroke-width="8" stroke-linecap="round"/>
+                            <rect x="190" y="194" width="18" height="10" rx="4" fill="#2b3a55"/>
+                        </g>
                     </svg>
                 </div>
 
@@ -105,7 +101,6 @@
                     <div class="boosts">
                         <div class="boost-header">
                             <span class="boost-title">Jerry Treat Meter</span>
-                            <span class="boost-subtitle">3 correct guesses = bonus reveal</span>
                         </div>
                         <div id="treat-meter" class="meter">
                             <span class="pip" data-pip="1"></span>
