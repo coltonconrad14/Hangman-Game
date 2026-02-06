@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Play Hangman against an AI word picker. Guess letters, track scores, and avoid 6 wrong guesses.">
-    <title>Hangman Game - Play Against AI</title>
+    <meta name="description" content="Hang Jerry is a streak-powered hangman game with category packs, bonus reveals, and a fresh word bank.">
+    <title>Hang Jerry - Streak-Powered Hangman</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,12 +14,36 @@
             <p>Advertisement Space</p>
         </div>
 
+        <div class="promo-bar">
+            <span>NEW SEASON DROP</span> Streak Boost + Mega Category Packs
+        </div>
+
         <header>
-            <h1>🎮 Hangman Game</h1>
-            <p class="subtitle">AI picks the word, you guess the letters!</p>
+            <h1>🎮 Hang Jerry</h1>
+            <p class="subtitle">A streak-powered hangman twist with Jerry Treat bonuses.</p>
+            <div class="hero-badges">
+                <span>Streak Boost</span>
+                <span>Category Packs</span>
+                <span>Bonus Reveals</span>
+            </div>
         </header>
 
         <main>
+            <section class="promo-grid">
+                <article class="promo-card">
+                    <h3>Build the Streak</h3>
+                    <p>Three correct guesses in a row charges the Treat Meter and auto-reveals a letter.</p>
+                </article>
+                <article class="promo-card">
+                    <h3>Fresh Categories</h3>
+                    <p>From Music to Space to Street Food, every round is a new theme to conquer.</p>
+                </article>
+                <article class="promo-card">
+                    <h3>Jerry Points</h3>
+                    <p>Rack up points for accuracy, bonus reveals, and clutch wins.</p>
+                </article>
+            </section>
+
             <div class="game-area">
                 <!-- Hangman Canvas -->
                 <div class="hangman-display">
@@ -52,6 +76,10 @@
 
                 <!-- Game Info -->
                 <div class="game-info">
+                    <div class="category-display">
+                        <span class="label">Category:</span>
+                        <span id="category-name" class="value">Tech</span>
+                    </div>
                     <div class="word-display" id="word-display"></div>
                     
                     <div class="game-stats">
@@ -60,7 +88,11 @@
                             <span id="wrong-count" class="value">0 / 6</span>
                         </div>
                         <div class="stat">
-                            <span class="label">Score:</span>
+                            <span class="label">Streak:</span>
+                            <span id="streak-count" class="value">0</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Jerry Points:</span>
                             <span id="score" class="value">0</span>
                         </div>
                     </div>
@@ -70,6 +102,19 @@
                         <div id="used-letters"></div>
                     </div>
 
+                    <div class="boosts">
+                        <div class="boost-header">
+                            <span class="boost-title">Jerry Treat Meter</span>
+                            <span class="boost-subtitle">3 correct guesses = bonus reveal</span>
+                        </div>
+                        <div id="treat-meter" class="meter">
+                            <span class="pip" data-pip="1"></span>
+                            <span class="pip" data-pip="2"></span>
+                            <span class="pip" data-pip="3"></span>
+                        </div>
+                        <div id="boost-message" class="boost-message" aria-live="polite"></div>
+                    </div>
+
                     <!-- Keyboard -->
                     <div class="keyboard" id="keyboard"></div>
 
@@ -77,7 +122,7 @@
                     <div id="game-message" class="game-message" aria-live="polite"></div>
 
                     <!-- New Game Button -->
-                    <button id="new-game-btn" class="btn-primary">New Game</button>
+                    <button id="new-game-btn" class="btn-primary">New Round</button>
                 </div>
             </div>
         </main>
@@ -88,7 +133,7 @@
         </div>
 
         <footer>
-            <p>© 2026 Hangman Game - Play Against AI</p>
+            <p>© 2026 Hang Jerry - Streak-Powered Hangman</p>
         </footer>
     </div>
 

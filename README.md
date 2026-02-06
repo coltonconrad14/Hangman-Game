@@ -1,16 +1,17 @@
-# Hangman Game - Play Against AI
+# Hang Jerry - Streak-Powered Hangman
 
-An interactive single-page web version of the classic Hangman game where AI picks the word and you guess the letters!
+An interactive single-page web version of the classic Hangman game with a streak-powered twist, category packs, and bonus reveals.
 
 ## 🎮 Features
 
-- **AI Opponent**: AI randomly selects from 50+ technology-themed words
+- **Category Packs**: Massive word bank across multiple themes
 - **Interactive Gameplay**: Click on-screen keyboard or use your physical keyboard
 - **Visual Feedback**: 
   - Hangman drawing that progressively appears with wrong guesses
   - Color-coded keyboard (green for correct, red for wrong)
   - Letter tracking display
-- **Score System**: Earn points for wins, track your progress across multiple games
+- **Streak Boost Twist**: Three correct guesses charge Jerry Treat Meter and auto-reveal a letter
+- **Score System**: Earn points for accuracy, bonus reveals, and wins
 - **Clear Win/Lose Conditions**: 
   - Win: Guess all letters correctly before 6 wrong attempts
   - Lose: Make 6 wrong guesses and the game is over
@@ -20,16 +21,19 @@ An interactive single-page web version of the classic Hangman game where AI pick
 ## 🚀 How to Play
 
 1. Open `index.html` in any modern web browser
-2. The AI will pick a random word (shown as underscores)
+2. The AI will pick a random category and word (shown as underscores)
 3. Click letters or use your keyboard to guess
-4. Try to guess the word before making 6 wrong guesses
-5. Win to earn points, then click "New Game" to play again!
+4. Build a streak of correct guesses to trigger a Jerry Treat bonus reveal
+5. Try to guess the word before making 6 wrong guesses
+6. Win to earn points, then click "New Round" to play again!
 
 ## 📊 Scoring
 
-- **Win**: 10 base points + 2 points for each unused guess
-- **Lose**: -5 points penalty
-- Score persists across games in the same session
+- **Jerry Treat Bonus Reveal**: +2 points
+- **Win**: 12 base points + 1 point for each unused guess
+- **Wrong Guess**: -1 point
+- **Lose**: -3 points penalty
+- Score persists across rounds in the same session
 
 ## 🛠️ Technology Stack
 
@@ -54,4 +58,4 @@ Works on all modern browsers:
 
 ## 📝 License
 
-© 2026 Hangman Game - Play Against AI
+© 2026 Hang Jerry - Streak-Powered Hangman
