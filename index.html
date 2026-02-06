@@ -72,6 +72,28 @@
 
                 <!-- Game Info -->
                 <div class="game-info">
+                    <div class="game-controls">
+                        <div class="control">
+                            <label for="difficulty-select">Difficulty</label>
+                            <select id="difficulty-select" class="select-control">
+                                <option value="easy">Easy</option>
+                                <option value="normal" selected>Normal</option>
+                                <option value="hard">Hard</option>
+                            </select>
+                        </div>
+                        <div class="control">
+                            <span class="label">Rounds</span>
+                            <span id="rounds-played" class="value">0</span>
+                        </div>
+                        <div class="control">
+                            <span class="label">Wins</span>
+                            <span id="rounds-won" class="value">0</span>
+                        </div>
+                        <div class="control">
+                            <span class="label">Best Streak</span>
+                            <span id="best-streak" class="value">0</span>
+                        </div>
+                    </div>
                     <div class="category-display">
                         <span class="label">Category:</span>
                         <span id="category-name" class="value">Tech</span>
@@ -107,7 +129,15 @@
                             <span class="pip" data-pip="2"></span>
                             <span class="pip" data-pip="3"></span>
                         </div>
+                        <div id="coin-flip" class="coin" aria-hidden="true">
+                            <span class="coin-face" data-face="heads">J</span>
+                            <span class="coin-face" data-face="tails">?</span>
+                        </div>
                         <div id="boost-message" class="boost-message" aria-live="polite"></div>
+                        <div class="boost-actions" aria-label="Streak power-ups">
+                            <button id="power-grey-btn" class="boost-btn" type="button" disabled>Grey Out Wrong Letters</button>
+                            <button id="power-risk-btn" class="boost-btn" type="button" disabled>Coin Flip Reveal</button>
+                        </div>
                     </div>
 
                     <!-- Keyboard -->

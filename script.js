@@ -8,52 +8,83 @@ class HangmanGame {
             'Tech Stack': [
                 'JAVASCRIPT', 'PYTHON', 'ALGORITHM', 'DATABASE', 'FRAMEWORK',
                 'COMPILER', 'VARIABLE', 'INTERFACE', 'MICROSERVICE', 'CONTAINER',
-                'KUBERNETES', 'ENCRYPTION', 'DEBUGGING', 'DEPLOYMENT'
+                'KUBERNETES', 'ENCRYPTION', 'DEBUGGING', 'DEPLOYMENT',
+                'AUTOMATION', 'CLOUDNATIVE', 'REFACTOR', 'PROTOCOL',
+                'BACKEND', 'FRONTEND', 'WEBSOCKET', 'SANDBOX'
             ],
             'Space': [
                 'GALAXY', 'NEBULA', 'ORBIT', 'ASTEROID', 'COMET',
                 'TELESCOPE', 'ROVER', 'SATELLITE', 'ASTRONAUT', 'PLANET',
-                'COSMOS', 'SUPERNOVA'
+                'COSMOS', 'SUPERNOVA', 'STARLIGHT', 'ECLIPSE',
+                'METEORITE', 'LUNAR', 'GRAVITY', 'APOLLO'
             ],
             'Music': [
                 'MELODY', 'CHORUS', 'HARMONY', 'PLAYLIST', 'RHYTHM',
                 'SYNTHESIZER', 'MICROPHONE', 'VINYL', 'HEADPHONES', 'ORCHESTRA',
-                'GUITAR', 'BASS'
+                'GUITAR', 'BASS', 'SONGWRITER', 'CONCERT',
+                'AMPLIFIER', 'DRUMMER', 'KEYBOARD'
             ],
             'Food': [
                 'TACOS', 'SUSHI', 'RISOTTO', 'PANCAKE', 'BURRITO',
                 'CROISSANT', 'DUMPLING', 'LASAGNA', 'NOODLES', 'TEMPURA',
-                'CUPCAKE', 'PIZZA'
+                'CUPCAKE', 'PIZZA', 'AVOCADO', 'TAHINI',
+                'BLUEBERRY', 'SANDWICH', 'BAGUETTE'
             ],
             'Adventure': [
                 'JUNGLE', 'CANYON', 'SUMMIT', 'GLACIER', 'TRAIL',
                 'OASIS', 'VOLCANO', 'SAFARI', 'HORIZON', 'COMPASS',
-                'RAPIDS', 'CAMPFIRE'
+                'RAPIDS', 'CAMPFIRE', 'BACKPACK', 'RIVERBANK',
+                'OUTPOST', 'WILDERNESS'
             ],
             'Sports': [
                 'SOCCER', 'BASEBALL', 'MARATHON', 'SURFING', 'SNOWBOARD',
                 'KARATE', 'CYCLING', 'CRICKET', 'VOLLEYBALL', 'SKATEBOARD',
-                'RODEO', 'SWIMMING'
+                'RODEO', 'SWIMMING', 'TRIATHLON', 'CLIMBING',
+                'LACROSSE', 'BADMINTON'
             ],
             'Pop Culture': [
                 'SUPERHERO', 'BLOCKBUSTER', 'PODCAST', 'ANIMATION', 'STREAMING',
                 'COSPLAY', 'MEME', 'TRAILER', 'SPINOFF', 'SOUNDTRACK',
-                'SITCOM', 'CAMEO'
+                'SITCOM', 'CAMEO', 'FANDOM', 'REBOOT',
+                'MERCH', 'CINEMATIC'
             ],
             'Nature': [
                 'RAINBOW', 'MONSOON', 'HURRICANE', 'WILDFLOWER', 'SEQUOIA',
                 'MEADOW', 'CRESCENT', 'LAGOON', 'WATERFALL', 'PINECONE',
-                'FIREFLY', 'MOONLIGHT'
+                'FIREFLY', 'MOONLIGHT', 'SUNRISE', 'AURORA',
+                'EVERGREEN', 'MOUNTAIN'
             ],
             'Brands': [
                 'NINTENDO', 'LEGO', 'SPOTIFY', 'NIKE', 'ADIDAS',
                 'SAMSUNG', 'TESLA', 'ORIGINALS', 'CANON', 'GOPRO',
-                'AIRBNB', 'KODAK'
+                'AIRBNB', 'KODAK', 'HASBRO',
+                'NETFLIX', 'OPENAI'
             ],
             'Games': [
                 'DUNGEON', 'QUEST', 'BOSSFIGHT', 'LEADERBOARD', 'CHECKPOINT',
                 'POWERUP', 'SPEEDRUN', 'ARCADE', 'SANDBOX', 'ARENA',
-                'PUZZLE', 'COOP'
+                'PUZZLE', 'COOP', 'TURNBASED', 'SINGLEPLAYER',
+                'MULTIPLAYER', 'LEVELUP'
+            ],
+            'Cities': [
+                'BOSTON', 'MIAMI', 'DALLAS', 'AUSTIN', 'CHICAGO',
+                'SEATTLE', 'DENVER', 'PHOENIX', 'ATLANTA', 'MADRID',
+                'LONDON', 'PARIS', 'DUBLIN', 'OSLO'
+            ],
+            'Science': [
+                'ELEMENT', 'MOLECULE', 'REACTION', 'QUANTUM', 'NEUTRON',
+                'PROTON', 'ELECTRON', 'LABORATORY', 'MICROSCOPE', 'SOLVENT',
+                'SPECTRUM', 'BIOLOGY'
+            ],
+            'Wildlife': [
+                'JAGUAR', 'DOLPHIN', 'PANTHER', 'PENGUIN', 'KOALA',
+                'CHEETAH', 'RABBIT', 'GIRAFFE', 'FLAMINGO', 'LEOPARD',
+                'WALRUS', 'BUFFALO'
+            ],
+            'Fantasy': [
+                'DRAGON', 'WIZARD', 'SPELLBOOK', 'KINGDOM', 'CASTLE',
+                'ENCHANTED', 'PHOENIX', 'UNICORN', 'SORCERER', 'TREASURE',
+                'MYTHICAL', 'QUESTING'
             ]
         };
 
@@ -64,6 +95,15 @@ class HangmanGame {
         this.maxWrongGuesses = 6;
         this.score = 0;
         this.streak = 0;
+        this.bestStreak = 0;
+        this.roundsPlayed = 0;
+        this.roundsWon = 0;
+        this.difficulty = 'normal';
+        this.difficultySettings = {
+            easy: { minLength: 4, maxWrong: 6, scoreMultiplier: 1 },
+            normal: { minLength: 5, maxWrong: 6, scoreMultiplier: 1.1 },
+            hard: { minLength: 7, maxWrong: 5, scoreMultiplier: 1.25 }
+        };
         this.treatCharge = 0;
         this.treatThreshold = 3;
         this.winBasePoints = 12;
@@ -73,6 +113,10 @@ class HangmanGame {
         this.losePenalty = 3;
         this.lastWinPoints = 0;
         this.gameOver = false;
+        this.powerUpReady = false;
+        this.powerGreyLetters = new Set();
+        this.riskyRevealOdds = 0.5;
+        this.greyOutCount = 5;
 
         // Body parts to display on wrong guesses
         this.bodyParts = ['head', 'body', 'left-arm', 'right-arm', 'left-leg', 'right-leg'];
@@ -82,21 +126,27 @@ class HangmanGame {
     }
 
     initializeGame() {
+        this.roundsPlayed += 1;
+        this.applyDifficulty();
+
         // AI picks a random category and word
         const categoryNames = Object.keys(this.categories);
         this.currentCategory = categoryNames[Math.floor(Math.random() * categoryNames.length)];
-        const words = this.categories[this.currentCategory];
+        const words = this.getFilteredWords(this.currentCategory);
         this.currentWord = words[Math.floor(Math.random() * words.length)];
         this.guessedLetters.clear();
+        this.powerGreyLetters.clear();
         this.wrongGuesses = 0;
         this.streak = 0;
         this.treatCharge = 0;
+        this.powerUpReady = false;
         this.gameOver = false;
 
         this.createKeyboard();
         this.updateDisplay();
         this.updateCategory();
         this.updateBoosts();
+        this.updateSessionStats();
         this.hideBodyParts();
         this.clearMessage();
     }
@@ -122,6 +172,24 @@ class HangmanGame {
             this.initializeGame();
         });
 
+        const difficultySelect = document.getElementById('difficulty-select');
+        if (difficultySelect) {
+            difficultySelect.addEventListener('change', (event) => {
+                this.difficulty = event.target.value;
+                this.initializeGame();
+            });
+        }
+
+        const powerGreyBtn = document.getElementById('power-grey-btn');
+        if (powerGreyBtn) {
+            powerGreyBtn.addEventListener('click', () => this.useGreyOutPowerUp());
+        }
+
+        const powerRiskBtn = document.getElementById('power-risk-btn');
+        if (powerRiskBtn) {
+            powerRiskBtn.addEventListener('click', () => this.useRiskyRevealPowerUp());
+        }
+
         // Keyboard input
         document.addEventListener('keydown', (e) => {
             if (this.gameOver) return;
@@ -138,38 +206,69 @@ class HangmanGame {
             return;
         }
 
-        this.guessedLetters.add(letter);
-
-        // Update keyboard button state
-        const button = document.querySelector(`[data-letter="${letter}"]`);
-        if (button) {
-            button.disabled = true;
-        }
-
-        // Check if letter is in the word
         if (this.currentWord.includes(letter)) {
-            if (button) {
-                button.classList.add('correct');
-            }
-            this.streak += 1;
-            this.treatCharge += 1;
-            this.maybeTriggerTreat();
+            this.applyCorrectLetter(letter, { awardStreak: true, awardTreat: true });
             this.checkWin();
         } else {
-            if (button) {
-                button.classList.add('wrong');
-            }
-            this.wrongGuesses++;
-            this.streak = 0;
-            this.treatCharge = 0;
-            this.score = Math.max(0, this.score - this.wrongGuessPenalty);
-            this.showBodyPart();
-            this.maybeTriggerTaunt();
-            this.checkLoss();
+            this.applyWrongLetter(letter, { applyPenalty: true, resetStreak: true, triggerTaunt: true });
         }
 
         this.updateDisplay();
         this.updateBoosts();
+        this.updateSessionStats();
+    }
+
+    applyCorrectLetter(letter, options = {}) {
+        const { awardStreak = false, awardTreat = false } = options;
+
+        this.guessedLetters.add(letter);
+        this.powerGreyLetters.delete(letter);
+
+        const button = document.querySelector(`[data-letter="${letter}"]`);
+        if (button) {
+            button.disabled = true;
+            button.classList.remove('wrong', 'power-grey');
+            button.classList.add('correct');
+        }
+
+        if (awardStreak) {
+            this.streak += 1;
+            this.bestStreak = Math.max(this.bestStreak, this.streak);
+        }
+
+        if (awardTreat && !this.powerUpReady) {
+            this.treatCharge += 1;
+            this.maybeTriggerTreat();
+        }
+    }
+
+    applyWrongLetter(letter, options = {}) {
+        const { applyPenalty = false, resetStreak = false, triggerTaunt = false } = options;
+
+        this.guessedLetters.add(letter);
+        this.powerGreyLetters.delete(letter);
+
+        const button = document.querySelector(`[data-letter="${letter}"]`);
+        if (button) {
+            button.disabled = true;
+            button.classList.remove('correct', 'power-grey');
+            button.classList.add('wrong');
+        }
+
+        if (applyPenalty) {
+            this.wrongGuesses += 1;
+            if (resetStreak) {
+                this.streak = 0;
+            }
+            this.treatCharge = 0;
+            this.powerUpReady = false;
+            this.score = Math.max(0, this.score - this.wrongGuessPenalty);
+            this.showBodyPart();
+            if (triggerTaunt) {
+                this.maybeTriggerTaunt();
+            }
+            this.checkLoss();
+        }
     }
 
     updateDisplay() {
@@ -193,12 +292,43 @@ class HangmanGame {
         Array.from(this.guessedLetters).sort().forEach(letter => {
             const span = document.createElement('span');
             span.className = 'used-letter';
+            if (this.powerGreyLetters.has(letter)) {
+                span.classList.add('power-grey');
+            }
             span.textContent = letter;
             usedLetters.appendChild(span);
         });
 
         // Update score
         document.getElementById('score').textContent = this.score;
+    }
+
+    updateSessionStats() {
+        const roundsPlayed = document.getElementById('rounds-played');
+        const roundsWon = document.getElementById('rounds-won');
+        const bestStreak = document.getElementById('best-streak');
+
+        if (roundsPlayed) {
+            roundsPlayed.textContent = this.roundsPlayed;
+        }
+        if (roundsWon) {
+            roundsWon.textContent = this.roundsWon;
+        }
+        if (bestStreak) {
+            bestStreak.textContent = this.bestStreak;
+        }
+    }
+
+    applyDifficulty() {
+        const settings = this.difficultySettings[this.difficulty] || this.difficultySettings.normal;
+        this.maxWrongGuesses = settings.maxWrong;
+    }
+
+    getFilteredWords(categoryName) {
+        const settings = this.difficultySettings[this.difficulty] || this.difficultySettings.normal;
+        const words = this.categories[categoryName] || [];
+        const filtered = words.filter(word => word.length >= settings.minLength);
+        return filtered.length ? filtered : words;
     }
 
     updateCategory() {
@@ -213,12 +343,35 @@ class HangmanGame {
         pips.forEach((pip, index) => {
             pip.classList.toggle('active', index < this.treatCharge);
         });
+
+        const meter = document.getElementById('treat-meter');
+        if (meter) {
+            meter.classList.toggle('ready', this.powerUpReady);
+        }
+
+        this.updatePowerUpButtons();
+    }
+
+    updatePowerUpButtons() {
+        const greyBtn = document.getElementById('power-grey-btn');
+        const riskBtn = document.getElementById('power-risk-btn');
+        const enabled = this.powerUpReady && !this.gameOver;
+
+        if (greyBtn) {
+            greyBtn.disabled = !enabled;
+        }
+
+        if (riskBtn) {
+            riskBtn.disabled = !enabled;
+        }
     }
 
     maybeTriggerTreat() {
         if (this.treatCharge >= this.treatThreshold && !this.gameOver) {
-            this.treatCharge = 0;
-            this.revealBonusLetter();
+            this.powerUpReady = true;
+            this.treatCharge = this.treatThreshold;
+            this.showBoostMessage('Power-up ready! Choose a treat.');
+            this.updateBoosts();
         }
     }
 
@@ -239,9 +392,125 @@ class HangmanGame {
             button.classList.add('correct');
         }
 
-        this.score += this.treatBonus;
-        this.showBoostMessage(`Jerry Treat! Revealed ${bonusLetter} (+${this.treatBonus})`);
+        const bonusPoints = this.applyScoreMultiplier(this.treatBonus);
+        this.score += bonusPoints;
+        this.showBoostMessage(`Jerry Treat! Revealed ${bonusLetter} (+${bonusPoints})`);
         this.checkWin();
+    }
+
+    useGreyOutPowerUp() {
+        if (!this.powerUpReady || this.gameOver) {
+            return;
+        }
+
+        const wrongLetters = this.getRemainingWrongLetters();
+        if (!wrongLetters.length) {
+            this.showBoostMessage('No wrong letters left to grey out.');
+            return;
+        }
+
+        const count = Math.min(this.greyOutCount, wrongLetters.length);
+        const selected = this.pickRandomLetters(wrongLetters, count);
+
+        selected.forEach(letter => {
+            this.guessedLetters.add(letter);
+            this.powerGreyLetters.add(letter);
+            const button = document.querySelector(`[data-letter="${letter}"]`);
+            if (button) {
+                button.disabled = true;
+                button.classList.remove('correct', 'wrong');
+                button.classList.add('power-grey');
+            }
+        });
+
+        this.consumePowerUp();
+        this.showBoostMessage(`Greyed out ${selected.length} wrong letters.`);
+        this.updateDisplay();
+        this.updateBoosts();
+        this.updateSessionStats();
+    }
+
+    useRiskyRevealPowerUp() {
+        if (!this.powerUpReady || this.gameOver) {
+            return;
+        }
+
+        const remainingCorrect = this.getRemainingCorrectLetters();
+        const remainingWrong = this.getRemainingWrongLetters();
+
+        if (!remainingCorrect.length && !remainingWrong.length) {
+            this.showBoostMessage('No letters left to reveal.');
+            return;
+        }
+
+        let chooseCorrect = false;
+        if (remainingCorrect.length && remainingWrong.length) {
+            chooseCorrect = Math.random() < this.riskyRevealOdds;
+        } else {
+            chooseCorrect = remainingCorrect.length > 0;
+        }
+
+        if (chooseCorrect) {
+            const letter = this.pickRandomLetters(remainingCorrect, 1)[0];
+            this.applyCorrectLetter(letter, { awardStreak: false, awardTreat: false });
+            this.showBoostMessage(`Heads! ${letter} is in the word.`);
+            this.triggerCoinFlip('heads');
+            this.checkWin();
+        } else {
+            const letter = this.pickRandomLetters(remainingWrong, 1)[0];
+            this.applyWrongLetter(letter, { applyPenalty: true, resetStreak: true, triggerTaunt: true });
+            this.showBoostMessage(`Tails. ${letter} is not in the word.`);
+            this.triggerCoinFlip('tails');
+        }
+
+        this.consumePowerUp();
+        this.updateDisplay();
+        this.updateBoosts();
+        this.updateSessionStats();
+    }
+
+    consumePowerUp() {
+        this.powerUpReady = false;
+        this.treatCharge = 0;
+    }
+
+    getRemainingCorrectLetters() {
+        const uniqueLetters = Array.from(new Set(this.currentWord.split('')));
+        return uniqueLetters.filter(letter => /[A-Z]/.test(letter) && !this.guessedLetters.has(letter));
+    }
+
+    getRemainingWrongLetters() {
+        const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        return alphabet.filter(letter => !this.currentWord.includes(letter) && !this.guessedLetters.has(letter));
+    }
+
+    pickRandomLetters(letters, count) {
+        const pool = [...letters];
+        const picks = [];
+
+        for (let i = 0; i < count && pool.length; i += 1) {
+            const index = Math.floor(Math.random() * pool.length);
+            picks.push(pool.splice(index, 1)[0]);
+        }
+
+        return picks;
+    }
+
+    triggerCoinFlip(result) {
+        const coin = document.getElementById('coin-flip');
+        if (!coin) {
+            return;
+        }
+
+        coin.classList.remove('flip', 'heads', 'tails', 'heads-success', 'tails-fail');
+        void coin.offsetWidth;
+        coin.classList.add('flip', result);
+
+        if (result === 'heads') {
+            coin.classList.add('heads-success');
+        } else {
+            coin.classList.add('tails-fail');
+        }
     }
 
     showBodyPart() {
@@ -291,7 +560,10 @@ class HangmanGame {
         if (allLettersGuessed) {
             this.gameOver = true;
             this.lastWinPoints = this.winBasePoints + (this.maxWrongGuesses - this.wrongGuesses) * this.winUnusedBonus;
-            this.score += this.lastWinPoints;
+            const adjustedWinPoints = this.applyScoreMultiplier(this.lastWinPoints);
+            this.score += adjustedWinPoints;
+            this.lastWinPoints = adjustedWinPoints;
+            this.roundsWon += 1;
             this.showWinMessage();
             this.disableAllKeys();
         }
@@ -346,6 +618,11 @@ class HangmanGame {
     disableAllKeys() {
         const keys = document.querySelectorAll('.key');
         keys.forEach(key => key.disabled = true);
+    }
+
+    applyScoreMultiplier(points) {
+        const settings = this.difficultySettings[this.difficulty] || this.difficultySettings.normal;
+        return Math.max(1, Math.round(points * settings.scoreMultiplier));
     }
 }
 
