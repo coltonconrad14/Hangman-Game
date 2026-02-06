@@ -20,9 +20,10 @@
 
         <main>
             <div class="game-area">
-                <!-- Hangman Canvas -->
-                <div class="hangman-display">
-                    <svg id="hangman-svg" width="260" height="300" viewBox="0 0 260 300" role="img" aria-label="Jerry mascot hangman">
+                <div class="left-panel">
+                    <!-- Hangman Canvas -->
+                    <div class="hangman-display">
+                        <svg id="hangman-svg" width="260" height="300" viewBox="0 0 260 300" role="img" aria-label="Jerry mascot hangman">
                         <!-- Gallows -->
                         <line x1="20" y1="270" x2="170" y2="270" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
                         <line x1="60" y1="270" x2="60" y2="20" stroke="#7a4a2f" stroke-width="6" stroke-linecap="round"/>
@@ -67,11 +68,9 @@
                             <line x1="182" y1="154" x2="196" y2="196" stroke="#3d5a80" stroke-width="8" stroke-linecap="round"/>
                             <rect x="190" y="194" width="18" height="10" rx="4" fill="#2b3a55"/>
                         </g>
-                    </svg>
-                </div>
+                        </svg>
+                    </div>
 
-                <!-- Game Info -->
-                <div class="game-info">
                     <div class="game-controls">
                         <div class="control">
                             <label for="difficulty-select">Difficulty</label>
@@ -94,6 +93,10 @@
                             <span id="best-streak" class="value">0</span>
                         </div>
                     </div>
+                </div>
+
+                <!-- Game Info -->
+                <div class="game-info right-panel">
                     <div class="category-display">
                         <span class="label">Category:</span>
                         <span id="category-name" class="value">Tech</span>
