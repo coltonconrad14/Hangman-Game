@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game - Play Against AI</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Ad Placeholder Top -->
+        <div class="ad-banner ad-top">
+            <p>Advertisement Space</p>
+        </div>
+
+        <header>
+            <h1>🎮 Hangman Game</h1>
+            <p class="subtitle">AI picks the word, you guess the letters!</p>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <!-- Hangman Canvas -->
+                <div class="hangman-display">
+                    <svg id="hangman-svg" width="250" height="300">
+                        <!-- Gallows -->
+                        <line x1="10" y1="280" x2="150" y2="280" stroke="#333" stroke-width="4"/>
+                        <line x1="50" y1="280" x2="50" y2="20" stroke="#333" stroke-width="4"/>
+                        <line x1="50" y1="20" x2="150" y2="20" stroke="#333" stroke-width="4"/>
+                        <line x1="150" y1="20" x2="150" y2="50" stroke="#333" stroke-width="4"/>
+                        
+                        <!-- Head -->
+                        <circle id="head" cx="150" cy="70" r="20" stroke="#e74c3c" stroke-width="3" fill="none" style="display:none;"/>
+                        
+                        <!-- Body -->
+                        <line id="body" x1="150" y1="90" x2="150" y2="150" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                        
+                        <!-- Left Arm -->
+                        <line id="left-arm" x1="150" y1="110" x2="120" y2="130" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                        
+                        <!-- Right Arm -->
+                        <line id="right-arm" x1="150" y1="110" x2="180" y2="130" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                        
+                        <!-- Left Leg -->
+                        <line id="left-leg" x1="150" y1="150" x2="130" y2="190" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                        
+                        <!-- Right Leg -->
+                        <line id="right-leg" x1="150" y1="150" x2="170" y2="190" stroke="#e74c3c" stroke-width="3" style="display:none;"/>
+                    </svg>
+                </div>
+
+                <!-- Game Info -->
+                <div class="game-info">
+                    <div class="word-display" id="word-display"></div>
+                    
+                    <div class="game-stats">
+                        <div class="stat">
+                            <span class="label">Wrong Guesses:</span>
+                            <span id="wrong-count" class="value">0 / 6</span>
+                        </div>
+                        <div class="stat">
+                            <span class="label">Score:</span>
+                            <span id="score" class="value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="letters-used">
+                        <p><strong>Letters Used:</strong></p>
+                        <div id="used-letters"></div>
+                    </div>
+
+                    <!-- Keyboard -->
+                    <div class="keyboard" id="keyboard"></div>
+
+                    <!-- Game Status Message -->
+                    <div id="game-message" class="game-message"></div>
+
+                    <!-- New Game Button -->
+                    <button id="new-game-btn" class="btn-primary">New Game</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Ad Placeholder Bottom -->
+        <div class="ad-banner ad-bottom">
+            <p>Advertisement Space</p>
+        </div>
+
+        <footer>
+            <p>© 2026 Hangman Game - Play Against AI</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
