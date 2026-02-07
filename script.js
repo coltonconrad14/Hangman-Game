@@ -10,81 +10,111 @@ class HangmanGame {
                 'COMPILER', 'VARIABLE', 'INTERFACE', 'MICROSERVICE', 'CONTAINER',
                 'KUBERNETES', 'ENCRYPTION', 'DEBUGGING', 'DEPLOYMENT',
                 'AUTOMATION', 'CLOUDNATIVE', 'REFACTOR', 'PROTOCOL',
-                'BACKEND', 'FRONTEND', 'WEBSOCKET', 'SANDBOX'
+                'BACKEND', 'FRONTEND', 'WEBSOCKET', 'SANDBOX',
+                'SERVERSIDE', 'OBSERVABILITY', 'SCALABILITY', 'INTEGRATION',
+                'SYNCHRONIZE', 'AUTHENTICATION', 'CONFIGURATION'
             ],
             'Space': [
                 'GALAXY', 'NEBULA', 'ORBIT', 'ASTEROID', 'COMET',
                 'TELESCOPE', 'ROVER', 'SATELLITE', 'ASTRONAUT', 'PLANET',
                 'COSMOS', 'SUPERNOVA', 'STARLIGHT', 'ECLIPSE',
-                'METEORITE', 'LUNAR', 'GRAVITY', 'APOLLO'
+                'METEORITE', 'LUNAR', 'GRAVITY', 'APOLLO',
+                'EXOPLANET', 'CONSTELLATION', 'SINGULARITY', 'ORRERY'
             ],
             'Music': [
                 'MELODY', 'CHORUS', 'HARMONY', 'PLAYLIST', 'RHYTHM',
                 'SYNTHESIZER', 'MICROPHONE', 'VINYL', 'HEADPHONES', 'ORCHESTRA',
                 'GUITAR', 'BASS', 'SONGWRITER', 'CONCERT',
-                'AMPLIFIER', 'DRUMMER', 'KEYBOARD'
+                'AMPLIFIER', 'DRUMMER', 'KEYBOARD',
+                'ARPEGGIO', 'MAESTRO', 'HARMONICA', 'SOUNDCHECK'
             ],
             'Food': [
                 'TACOS', 'SUSHI', 'RISOTTO', 'PANCAKE', 'BURRITO',
                 'CROISSANT', 'DUMPLING', 'LASAGNA', 'NOODLES', 'TEMPURA',
                 'CUPCAKE', 'PIZZA', 'AVOCADO', 'TAHINI',
-                'BLUEBERRY', 'SANDWICH', 'BAGUETTE'
+                'BLUEBERRY', 'SANDWICH', 'BAGUETTE',
+                'GELATO', 'ESPRESSO', 'CASSEROLE', 'GNOCCHI'
             ],
             'Adventure': [
                 'JUNGLE', 'CANYON', 'SUMMIT', 'GLACIER', 'TRAIL',
                 'OASIS', 'VOLCANO', 'SAFARI', 'HORIZON', 'COMPASS',
                 'RAPIDS', 'CAMPFIRE', 'BACKPACK', 'RIVERBANK',
-                'OUTPOST', 'WILDERNESS'
+                'OUTPOST', 'WILDERNESS',
+                'RIDGELINE', 'LANDMARK', 'TRAILHEAD', 'NAVIGATION'
             ],
             'Sports': [
                 'SOCCER', 'BASEBALL', 'MARATHON', 'SURFING', 'SNOWBOARD',
                 'KARATE', 'CYCLING', 'CRICKET', 'VOLLEYBALL', 'SKATEBOARD',
                 'RODEO', 'SWIMMING', 'TRIATHLON', 'CLIMBING',
-                'LACROSSE', 'BADMINTON'
+                'LACROSSE', 'BADMINTON',
+                'RUGBY', 'HURDLING', 'GYMNAST', 'PICKLEBALL'
             ],
             'Pop Culture': [
                 'SUPERHERO', 'BLOCKBUSTER', 'PODCAST', 'ANIMATION', 'STREAMING',
                 'COSPLAY', 'MEME', 'TRAILER', 'SPINOFF', 'SOUNDTRACK',
                 'SITCOM', 'CAMEO', 'FANDOM', 'REBOOT',
-                'MERCH', 'CINEMATIC'
+                'MERCH', 'CINEMATIC',
+                'FRANCHISE', 'CLIFFHANGER', 'SHOWRUNNER', 'CROSSOVER'
             ],
             'Nature': [
                 'RAINBOW', 'MONSOON', 'HURRICANE', 'WILDFLOWER', 'SEQUOIA',
                 'MEADOW', 'CRESCENT', 'LAGOON', 'WATERFALL', 'PINECONE',
                 'FIREFLY', 'MOONLIGHT', 'SUNRISE', 'AURORA',
-                'EVERGREEN', 'MOUNTAIN'
+                'EVERGREEN', 'MOUNTAIN',
+                'HEADLAND', 'ESTUARY', 'DRIFTWOOD', 'WATERSHED'
             ],
             'Brands': [
                 'NINTENDO', 'LEGO', 'SPOTIFY', 'NIKE', 'ADIDAS',
                 'SAMSUNG', 'TESLA', 'ORIGINALS', 'CANON', 'GOPRO',
                 'AIRBNB', 'KODAK', 'HASBRO',
-                'NETFLIX', 'OPENAI'
+                'NETFLIX', 'OPENAI',
+                'MICROSOFT', 'INTEL', 'PLAYSTATION', 'STARBUCKS'
             ],
             'Games': [
                 'DUNGEON', 'QUEST', 'BOSSFIGHT', 'LEADERBOARD', 'CHECKPOINT',
                 'POWERUP', 'SPEEDRUN', 'ARCADE', 'SANDBOX', 'ARENA',
                 'PUZZLE', 'COOP', 'TURNBASED', 'SINGLEPLAYER',
-                'MULTIPLAYER', 'LEVELUP'
+                'MULTIPLAYER', 'LEVELUP',
+                'RESPAWN', 'CUTSCENE', 'ACHIEVEMENT', 'BATTLEPASS'
             ],
             'Cities': [
                 'BOSTON', 'MIAMI', 'DALLAS', 'AUSTIN', 'CHICAGO',
                 'SEATTLE', 'DENVER', 'PHOENIX', 'ATLANTA', 'MADRID',
-                'LONDON', 'PARIS', 'DUBLIN', 'OSLO'
+                'LONDON', 'PARIS', 'DUBLIN', 'OSLO',
+                'TOKYO', 'BERLIN', 'SYDNEY', 'TORONTO'
             ],
             'Science': [
                 'ELEMENT', 'MOLECULE', 'REACTION', 'QUANTUM', 'NEUTRON',
                 'PROTON', 'ELECTRON', 'LABORATORY', 'MICROSCOPE', 'SOLVENT',
-                'SPECTRUM', 'BIOLOGY'
+                'SPECTRUM', 'BIOLOGY',
+                'ISOTOPE', 'CATALYST', 'GRADIENT', 'ENTROPY'
             ],
             'Wildlife': [
                 'JAGUAR', 'DOLPHIN', 'PANTHER', 'PENGUIN', 'KOALA',
                 'CHEETAH', 'RABBIT', 'GIRAFFE', 'FLAMINGO', 'LEOPARD',
-                'WALRUS', 'BUFFALO'
+                'WALRUS', 'BUFFALO',
+                'MEERKAT', 'ARMADILLO', 'HEDGEHOG', 'WOODPECKER'
             ],
             'Fantasy': [
                 'DRAGON', 'WIZARD', 'SPELLBOOK', 'KINGDOM', 'CASTLE',
                 'ENCHANTED', 'PHOENIX', 'UNICORN', 'SORCERER', 'TREASURE',
-                'MYTHICAL', 'QUESTING'
+                'MYTHICAL', 'QUESTING',
+                'SPELLBOUND', 'RUNESTONE', 'DRUIDIC', 'BLOODLINE'
+            ],
+            'Ocean': [
+                'TIDAL', 'SEAFLOOR', 'CORAL', 'ABYSSAL', 'SEAGULL',
+                'CURRENT', 'WHIRLPOOL', 'SHIPWRECK', 'SEASHELL', 'DOLDRUMS',
+                'BRINY', 'NAVIGATE', 'ANCHORAGE', 'LANTERNFISH'
+            ],
+            'History': [
+                'EMPIRE', 'REVOLUTION', 'LEGION', 'DYNASTY', 'MONARCH',
+                'ARTIFACT', 'RENAISSANCE', 'MANUSCRIPT', 'MUSEUM', 'CHRONICLE',
+                'SETTLEMENT', 'CITADEL', 'CARAVAN', 'ARCHIVE'
+            ],
+            'Architecture': [
+                'BLUEPRINT', 'FOUNDATION', 'CATHEDRAL', 'ARCHWAY', 'SKYLINE',
+                'PAVILION', 'STRUCTURE', 'PLAZA', 'FACADE', 'BALCONY',
+                'COLUMN', 'VILLA', 'MONUMENT', 'AMPHITHEATER'
             ]
         };
 
@@ -102,7 +132,7 @@ class HangmanGame {
         this.difficultySettings = {
             easy: { minLength: 4, maxWrong: 6, scoreMultiplier: 1 },
             normal: { minLength: 5, maxWrong: 6, scoreMultiplier: 1.1 },
-            hard: { minLength: 7, maxWrong: 5, scoreMultiplier: 1.25 }
+            hard: { minLength: 7, maxWrong: 6, scoreMultiplier: 1.25 }
         };
         this.treatCharge = 0;
         this.treatThreshold = 3;
