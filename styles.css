@@ -91,11 +91,16 @@ main {
 .game-area {
     display: grid;
     grid-template-columns: minmax(280px, 400px) minmax(0, 1fr);
+    grid-template-areas:
+        "left right"
+        "boosts right"
+        "controls right";
     gap: 30px;
     align-items: start;
 }
 
 .left-panel {
+    grid-area: left;
     display: grid;
     gap: 18px;
 }
@@ -145,6 +150,7 @@ main {
 }
 
 .game-info {
+    grid-area: right;
     min-width: 300px;
     background: #fffef9;
     border-radius: 20px;
@@ -154,6 +160,7 @@ main {
 }
 
 .game-controls {
+    grid-area: controls;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
@@ -293,6 +300,7 @@ main {
 }
 
 .boosts {
+    grid-area: boosts;
     background: #fff6ee;
     border: 1px solid rgba(255, 122, 89, 0.25);
     border-radius: 16px;
@@ -549,6 +557,11 @@ footer {
 
     .game-area {
         grid-template-columns: 1fr;
+        grid-template-areas:
+            "left"
+            "right"
+            "boosts"
+            "controls";
     }
 
     .hangman-display {
