@@ -95,7 +95,7 @@ main {
         "left right"
         "boosts right"
         "controls right";
-    gap: 30px;
+    gap: 16px 30px;
     align-items: start;
 }
 
@@ -164,7 +164,7 @@ main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 0;
     padding: 14px;
     background: var(--surface-muted);
     border-radius: 14px;
@@ -305,7 +305,7 @@ main {
     border: 1px solid rgba(255, 122, 89, 0.25);
     border-radius: 16px;
     padding: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 0;
     box-shadow: 0 10px 22px rgba(255, 122, 89, 0.1);
 }
 
