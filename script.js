@@ -147,6 +147,8 @@ class HangmanGame {
         this.powerGreyLetters = new Set();
         this.riskyRevealOdds = 0.5;
         this.greyOutCount = 5;
+        this.adsEnabled = false;
+        this.adsenseClient = 'ca-pub-3719342224017705';
 
         // Body parts to display on wrong guesses
         this.bodyParts = ['head', 'body', 'left-arm', 'right-arm', 'left-leg', 'right-leg'];
@@ -179,6 +181,7 @@ class HangmanGame {
         this.updateSessionStats();
         this.hideBodyParts();
         this.clearMessage();
+        this.maybeEnableAds();
     }
 
     createKeyboard() {
@@ -653,6 +656,50 @@ class HangmanGame {
     applyScoreMultiplier(points) {
         const settings = this.difficultySettings[this.difficulty] || this.difficultySettings.normal;
         return Math.max(1, Math.round(points * settings.scoreMultiplier));
+    }
+
+    adsContentReady() {
+        const wordDisplay = document.getElementById('word-display');
+        const keyboard = document.getElementById('keyboard');
+        const categoryLabel = document.getElementById('category-name');
+        const hasWord = wordDisplay && wordDisplay.textContent.trim().length > 0;
+        const hasKeyboard = keyboard && keyboard.children.length > 0;
+        const hasCategory = categoryLabel && categoryLabel.textContent.trim().length > 0;
+        return hasWord && hasKeyboard && hasCategory;
+    }
+
+    setAdsVisible(visible) {
+        ['ad-top', 'ad-bottom'].forEach((id) => {
+            const ad = document.getElementById(id);
+            if (!ad) {
+                return;
+            }
+            ad.classList.toggle('is-hidden', !visible);
+            ad.setAttribute('aria-hidden', visible ? 'false' : 'true');
+        });
+    }
+
+    loadAdsenseScript() {
+        if (document.querySelector('script[data-adsense="true"]')) {
+            return;
+        }
+
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${this.adsenseClient}`;
+        script.crossOrigin = 'anonymous';
+        script.dataset.adsense = 'true';
+        document.head.appendChild(script);
+    }
+
+    maybeEnableAds() {
+        if (this.adsEnabled || !this.adsContentReady()) {
+            return;
+        }
+
+        this.adsEnabled = true;
+        this.setAdsVisible(true);
+        this.loadAdsenseScript();
     }
 }
 

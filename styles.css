@@ -60,6 +60,10 @@ body {
     font-size: 0.85em;
 }
 
+.ad-banner.is-hidden {
+    display: none;
+}
+
 .ad-bottom {
     border-bottom: none;
     border-top: 2px solid var(--banner-edge);
